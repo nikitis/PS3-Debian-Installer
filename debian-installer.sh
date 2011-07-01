@@ -4,11 +4,14 @@
 
 ## Please note that this is a work in progress
 
-## Version 0.01
+## Version 0.71
 
-echo "I do not work yet Sorry"
+echo "I am in testing phase.  Just so you know.  I may not fully work yet.  Sorry"
+echo "Currently this script assumes that you have a /dev/ps3dd1 dedicated for swap, and /dev/ps3dd2 dedicated for root (/) If this is not the case, please it ctrl-c now to cancel this script as it will not work correctly for the moment.  Waiting 5 seconds before continuing"
+sleep 5
 
 ## Unmounts the partition
+echo "Unmounting partition /dev/ps3dd2
 umount /dev/ps3dd2
 
 ## Creates the directory to chroot to.
