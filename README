@@ -2,12 +2,17 @@ Debian Installer for the Playstation 3 System.
 * This not in anyway endorsed by Sony and all other Sony companies/entities that are in existance.
 * All software written here was written by hand and does not use any Sony Proprietary Code.
 
-These are the first attempts at an official installer for the PS3.
+Disclaimer:
+* I am in no way responsible for anything that happens to your Playstation 3 while using this installer.
+* There should be no reason for this software to brick your Playstation 3 system, but in the event it
+* does, I am not responsible for it.  Use at your own risk!
+
+These are the first attempts at an official debian installer for the Playstation 3.
 
 Reasons for this installer:
 - People make mistakes.  Simple as that. To err is human.
 - This installer is to automate and hopefully cut down on chatter in the IRC rooms
-- Make installing Ubuntu easier on the PS3.
+- Make installing Debian easier on the PS3.
 
 TODO:
 v0.89
