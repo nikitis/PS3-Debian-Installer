@@ -4,7 +4,7 @@
 
 ## Please note that this is a work in progress
 
-## Version 0.71
+## Version 0.89
 
 echo "I am in testing phase.  Just so you know.  I may not fully work yet.  Sorry"
 echo "Currently this script assumes that you have a /dev/ps3dd1 dedicated for swap, and /dev/ps3dd2 dedicated for root (/) If this is not the case, please it ctrl-c now to cancel this script as it will not work correctly for the moment.  Waiting 5 seconds before continuing"
@@ -118,4 +118,26 @@ echo "Cleaning up install packages to save space on HDD. . ."
 aptitude clean
 echo "Please set a root password."
 passwd
+
+## Kernal compiling (Still very beta)
+cd /usr/src
+git clone git://git.gitbrew.org/ps3/ps3linux/linux-2.6.git
+ln -sf linux-2.6 linux
+cd linux
+cp ps3_linux_config .config
+make menuconfig
+make
+make install
+make modules_install
+
+## Creating kboot.conf entry
+echo "Creating kboot.conf entries. . ."
+echo -e "debian=/boot/vmlinux-2.6.* root=/dev/ps3dd2\ndebian_Hugepages=/boot/vmlinux-2.6.* root=/dev/ps3dd2 hugepages=1" > /etc/kboot.conf
+
+## Creating /dev/ps3flash device for ps3-utils
+echo -e "Creating udev device \"ps3vflash\" for ps3-utils"
+echo -e "KERNEL==\"ps3vflash\", SYMLINK+=\"ps3flash\"" > /etc/udev/rules.d/70-persistent-ps3flash.rules
+
+## Finished
+echo -e "Installation is complete.  Hit enter on your keyboard and immediately unplug the usb keyboard.  If it did not boot and you see \"System is going down for reboot\" message and did not boot the new kernel, then you probably weren't fast enough but try again."
 
