@@ -1,0 +1,26 @@
+#!/bin/bash
+echo "########## CHECK FILE FOR INSTALLER ENTRIES by NIKITIS ##########" > /tmp/check.log
+echo -e "\n\n## Mtab Entries" >> /tmp/check.log
+cat /etc/mtab >> /tmp/check.log
+echo -e "\n\n## Fstab entries " >> /tmp/check.log
+cat /etc/fstab >> /tmp/check.log
+echo -e "\n\n## Timezone Entries" >> /tmp/check.log
+cat /etc/default/rcS >> /tmp/check.log
+echo -e "\n\n## Network Interface Entries" >> /tmp/check.log
+cat /etc/network/interfaces >> /tmp/check.log
+echo -e "\n\n## Gateway Entries" >> /tmp/check.log
+cat /etc/resolv.conf >> /tmp/check.log
+echo -e "\n\n## Aptitude Sources Entries " >> /tmp/check.log
+cat /etc/apt/sources.list >> /tmp/check.log
+echo -e "\n\n## Installed Packages" >> /tmp/check.log
+sudo apt-cache pkgnames >> /tmp/check.log
+echo -e "\n\n## List Installed Kernel" >> /tmp/check.log
+uname -a >> /tmp/check.log
+echo -e "\n\n" >> /tmp/check.log
+ls -la /boot >> /tmp/check.log
+echo -e "\n\n## Contents of Kboot.conf >> /tmp/check.log
+cat /etc/kboot.conf >> /tmp/check.log
+echo -e "\n\n## Checking For /dev/ps3flash device" >> /tmp/check.log
+ls -la /etc/udev/rules.d/ >> /tmp/check.log
+cat /etc/udev/rules.d/70-persistent-ps3flash.rules >> /tmp/check.log
+echo "End of check script.  Upload to pastie.org
