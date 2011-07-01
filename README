@@ -19,6 +19,7 @@ v0.89
 - Add git clone ability to clone the latest kernel
 - Add kernel compiling
 - Add reboot and unplug usb keyboard message
+- Attempt to add pre-installation script to prepare the partitioning.
 
 v0.71
 - Add most of the functions of the installer to the script
