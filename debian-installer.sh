@@ -16,27 +16,6 @@ echo "Waiting 10 seconds before continuing"
 sleep 10
 
 
-## Parted scripting
-
-# Setting Variables
-
-DEVICE="/dev/ps3dd"
-
-# Actual Script
-
-parted ${DEVICE} --script -- rm 1
-parted ${DEVICE} --script -- rm 2
-dd if=/dev/zero of=${DEVICE} bs=512 count=200
-parted ${DEVICE} --script -- mklabel GPT
-parted ${DEVICE} --script -- mkpart primary 0 2GB
-parted ${DEVICE} --script -- mkpart 2GB -1
-parted ${DEVICE} --script -- print
-echo " "
-echo "Please look over the partition table for 15 seconds.  If it looks incorrect,"
-echo "hit ctrl-c to cancel the install and ask nikitis on gitbrew irc."
-sleep 15
-
-
 ## Unmounts the partition
 
 echo "Unmounting partition /dev/ps3dd2
@@ -49,7 +28,7 @@ mkdir /mnt/debian
 
 
 ## Choice of type of formatting to be used on ps3dd2
-read -p "Which filesystem type do you wish \"/\" to have?  ext(2/3/4) (s)kip" A
+read -p "Which filesystem type do you wish \"/\" to have?  ext\(2\/3\/4\) \(s\)kip" A
 if [ "$A" = 2 ]; then
         echo "Formatting ext2"
 	mkfs.ext2 /dev/ps3dd2
@@ -60,9 +39,9 @@ elif [ "$A" = 4 ]; then
         echo "Formatting ext4"
 	mkfs.ext4 /dev/ps3dd2
 elif [ "$A" = s ]; then 
-	read -p "Have you already formatted your HDD?  This is different from partitioning. Are you sure you want to skip? (y/n)" B
+	read -p "Have you already formatted your HDD?  This is different from partitioning. Are you sure you want to skip? \(y\/n\)" B
 	if [ "$B" = n ]; then
-		read -p "Which filesystem? ext(2/3/4)" A
+		read -p "Which filesystem? ext\(2\/3\/4\)" A
 		if [ "$A" = 2 ]; then
                         echo "Formatting ext2"
 			mkfs.ext2 /dev/ps3dd2
@@ -76,7 +55,7 @@ elif [ "$A" = s ]; then
 			echo "You failed to hit 2, 3, 4.  You've crashed the script.  Start over."
 		fi
 	elif [ "$B" = y ]; then 
-		read -p "Since you have already formatted your parition, what filesytem was used? ext(2/3/4)? A
+		read -p "Since you have already formatted your parition, what filesytem was used? ext\(2\/3\/4\)?" A
 			echo "Skipping formatting process."
 	else 
 		echo "You did not hit y or n.  You have crashed the script."
