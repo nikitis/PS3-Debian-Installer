@@ -7,15 +7,25 @@
 ## Version 0.89
 
 echo "I am in testing phase.  Just so you know.  I may not fully work yet.  Sorry"
-echo "Currently this script assumes that you have a /dev/ps3dd1 dedicated for swap, and /dev/ps3dd2 dedicated for root (/) If this is not the case, please it ctrl-c now to cancel this script as it will not work correctly for the moment.  Waiting 5 seconds before continuing"
-sleep 5
+echo " "
+echo "Currently this script assumes that you have a /dev/ps3dd1 dedicated for swap,"
+echo "and /dev/ps3dd2 dedicated for root (/) If this is not the case, please hit"
+echo "ctrl-c now to cancel this script as it will not work correctly for the moment."
+echo " "
+echo "Waiting 10 seconds before continuing"
+sleep 10
+
 
 ## Unmounts the partition
+
 echo "Unmounting partition /dev/ps3dd2
 umount /dev/ps3dd2
 
+
 ## Creates the directory to chroot to.
+
 mkdir /mnt/debian
+
 
 ## Choice of type of formatting to be used on ps3dd2
 read -p "Which filesystem type do you wish \"/\" to have?  ext(2/3/4) (s)kip" A
