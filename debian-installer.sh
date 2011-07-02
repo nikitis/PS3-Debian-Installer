@@ -1,6 +1,6 @@
 #!/bin/bash
 
-## My first attempt at a distribution installer
+### My first attempt at a distribution installer
 
 ## Please note that this is a work in progress
 
