@@ -1,6 +1,6 @@
 #!/bin/bash
 
-### My first attempt at a distribution installer
+## My first attempt at a distribution installer
 
 ## Please note that this is a work in progress
 
@@ -91,6 +91,4 @@ sleep 1
 mount -t proc none /mnt/debian/proc
 mount --rbind /dev /mnt/debian/dev
 LANG=C chroot /mnt/debian /tmp/debian-installer-2.sh
-
-
 
