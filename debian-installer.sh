@@ -88,7 +88,7 @@ echo "chrooting. . ."
 sleep 1
 mount -t proc none /mnt/debian/proc
 mount --rbind /dev /mnt/debian/dev
-LANG=C chroot /mnt/debian
+LANG=C chroot /mnt/debian /bin/bash
 
 
 ## Adding color to terminal
@@ -103,7 +103,7 @@ export TERM=xterm-color
 
 echo "Setting up fstab entries. . ."
 sleep 2
-echo -e "/dev/ps3dd2	/		ext$A	defaults		0 1\n/dev/ps3vram	none		swap	sw			0 0\n/dev/ps3dd1	none		swap	sw			0 0\n/dev/sr0	/mnt/cdrom	auto	noauto,ro		0 0\nproc		/proc		proc	defaults		0 0\nshm		/dev/shm	tmpfs	nodev,nosuid,,noexec	0 0\n" > /etc/fstab
+echo -e "/dev/ps3dd2	/		ext$A	defaults		0 1\n/dev/ps3vram	none		swap	sw			0 0\n/dev/ps3dd1	none		swap	sw			0 0\n/dev/sr0	/mnt/cdrom	auto	noauto,ro		0 0\nproc		/proc		proc	defaults		0 0\nshm		/dev/shm	tmpfs	nodev,nosuid,noexec	0 0\n" > /etc/fstab
 
 
 ## Setting up timezone
@@ -124,7 +124,7 @@ echo $D > /etc/hostname
 
 ## Setting up /etc/network/interfaces
 
-echo -e "auto lo\niface lo inet loopback\n\nauto eth0\niface eth0 inet dhcp\n"
+echo -e "auto lo\niface lo inet loopback\n\nauto eth0\niface eth0 inet dhcp\n" > /etc/network/interfaces
 
 
 ## Setting up /etc/resolv.conf
@@ -139,12 +139,12 @@ fi
 
 ## Configuring aptitude sources in /etc/apt/sources.list
 
-echo -e "deb http://ftp.us.debian.org/debian/squeeze main\ndeb-src http://ftp.us.debian.org/debian squeeze main\n\ndeb http://security.debian.org/ squeeze/updates main\ndeb-src http://security.debian.org/ squeeze/updates main\n"
+echo -e "deb http://ftp.us.debian.org/debian/squeeze main\ndeb-src http://ftp.us.debian.org/debian squeeze main\n\ndeb http://security.debian.org/ squeeze/updates main\ndeb-src http://security.debian.org/ squeeze/updates main\n" > /etc/apt/sources.list
 
 
 ## Updating packages for Debian install
 
-echo "Installing and setting up locales.  For english set en-us.
+echo "Installing and setting up locales.  For english set en-us."
 sleep 5
 aptitude install locales
 dpkg-reconfigure locales
