@@ -53,7 +53,7 @@ fi
 
 ## Configuring aptitude sources in /etc/apt/sources.list
 
-echo -e "deb http://ftp.us.debian.org/debian/squeeze main\ndeb-src http://ftp.us.debian.org/debian squeeze main\n\ndeb http://security.debian.org/ squeeze/updates main\ndeb-src http://security.debian.org/ squeeze/updates main\n" > /etc/apt/sources.list
+echo -e "deb http://ftp.us.debian.org/debian squeeze main\ndeb-src http://ftp.us.debian.org/debian squeeze main\n\ndeb http://security.debian.org/ squeeze/updates main\ndeb-src http://security.debian.org/ squeeze/updates main\n" > /etc/apt/sources.list
 
 
 ## Updating packages for Debian install
