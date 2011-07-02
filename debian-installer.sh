@@ -16,6 +16,27 @@ echo "Waiting 10 seconds before continuing"
 sleep 10
 
 
+## Parted scripting
+
+# Setting Variables
+
+DEVICE="/dev/ps3dd"
+
+# Actual Script
+
+parted ${DEVICE} --script -- rm 1
+parted ${DEVICE} --script -- rm 2
+dd if=/dev/zero of=${DEVICE} bs=512 count=200
+parted ${DEVICE} --script -- mklabel GPT
+parted ${DEVICE} --script -- mkpart primary 0 2GB
+parted ${DEVICE} --script -- mkpart 2GB -1
+parted ${DEVICE} --script -- print
+echo " "
+echo "Please look over the partition table for 15 seconds.  If it looks incorrect,"
+echo "hit ctrl-c to cancel the install and ask nikitis on gitbrew irc."
+sleep 15
+
+
 ## Unmounts the partition
 
 echo "Unmounting partition /dev/ps3dd2
