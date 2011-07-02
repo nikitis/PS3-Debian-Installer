@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ############# Section 2 of Debian Installer ###########
 ## Had to add this section due to chrooting process. ##
 #######################################################
