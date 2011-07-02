@@ -28,7 +28,7 @@ mkdir /mnt/debian
 
 
 ## Choice of type of formatting to be used on ps3dd2
-read -p "Which filesystem type do you wish \"/\" to have?  ext\(2\/3\/4\) \(s\)kip" A
+read -p "Which filesystem type do you wish \"\/\" to have?  ext\(2\/3\/4\) \(s\)kip" A
 if [ "$A" = 2 ]; then
         echo "Formatting ext2"
 	mkfs.ext2 /dev/ps3dd2
