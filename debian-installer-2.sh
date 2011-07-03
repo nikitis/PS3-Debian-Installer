@@ -19,7 +19,7 @@ echo " "
 echo "Setting up fstab entries. . ."
 echo " "
 sleep 3
-echo -e "/dev/ps3dd2	/		ext$A	defaults		0 1\n/dev/ps3vram	none		swap	sw			0 0\n/dev/ps3dd1	none		swap	sw			0 0\n/dev/sr0	/mnt/cdrom	auto	noauto,ro		0 0\nproc		/proc		proc	defaults		0 0\nshm		/dev/shm	tmpfs	nodev,nosuid,noexec	0 0\n" > /etc/fstab
+echo -e "/dev/ps3dd2	/		extextvar	defaults		0 1\n/dev/ps3vram	none		swap	sw			0 0\n/dev/ps3dd1	none		swap	sw			0 0\n/dev/sr0	/mnt/cdrom	auto	noauto,ro		0 0\nproc		/proc		proc	defaults		0 0\nshm		/dev/shm	tmpfs	nodev,nosuid,noexec	0 0\n" > /etc/fstab
 
 
 ## Setting up timezone
@@ -122,11 +122,12 @@ swapon /dev/ps3dd1
 git clone git://git.gitbrew.org/ps3/ps3linux/linux-2.6.git /usr/src/linux-2.6
 ln -sf /usr/src/linux-2.6 /usr/src/linux
 cp /usr/src/linux/ps3_linux_config /usr/src/linux/.config
+cd /usr/src/linux
 make menuconfig
 make
 make install
 make modules_install
-
+cd /
 
 ## Creating kboot.conf entry
 
