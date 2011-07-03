@@ -74,7 +74,7 @@ mount /dev/ps3dd2 /mnt/debian
 ## This step is used for when the script is re-run 
 
 echo "Cleaning formatted drive. . ."
-rm -rf /mnt/debian*
+rm -rf /mnt/debian/*
 
 
 ## Debootstrap
@@ -82,8 +82,11 @@ rm -rf /mnt/debian*
 echo "Debootstrapping. . ."
 debootstrap --arch powerpc squeeze /mnt/debian http://ftp.us.debian.org/debian
 
-echo "Copying 2nd half of installer over to post-chrooted environment"
+echo "Copying 2nd half of installer and variables over to post-chrooted environment"
 cp ./debian-installer-2.sh /mnt/debian/tmp/debian-installer-2.sh
+sed -i "s/extvar/$A/g" /mnt/debian/tmp/debian-installer-2.sh
+
+
 ## Mounting proc as part of chroot.
 
 echo "chrooting. . ."
