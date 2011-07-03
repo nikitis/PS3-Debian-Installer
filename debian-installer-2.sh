@@ -119,7 +119,7 @@ swapon /dev/ps3dd1
 
 ## Kernal compiling (Still very beta)
 
-git clone git://git.gitbrew.org/ps3/ps3linux/linux-2.6.git /usr/src/linux-2.6
+git clone --depth 1 git://git.gitbrew.org/ps3/ps3linux/linux-2.6.git /usr/src/linux-2.6
 ln -sf /usr/src/linux-2.6 /usr/src/linux
 cp /usr/src/linux/ps3_linux_config /usr/src/linux/.config
 cd /usr/src/linux
