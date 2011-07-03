@@ -119,10 +119,9 @@ swapon /dev/ps3dd1
 
 ## Kernal compiling (Still very beta)
 
-git clone git://git.gitbrew.org/ps3/ps3linux/linux-2.6.git /usr/src/
-ln -sf linux-2.6 linux
-cd linux
-cp ps3_linux_config .config
+git clone git://git.gitbrew.org/ps3/ps3linux/linux-2.6.git /usr/src/linux-2.6
+ln -sf /usr/src/linux-2.6 /usr/src/linux
+cp /usr/src/linux/ps3_linux_config /usr/src/linux/.config
 make menuconfig
 make
 make install
@@ -134,7 +133,10 @@ make modules_install
 echo " "
 echo "Creating kboot.conf entries. . ."
 echo " "
-echo -e "debian=/boot/vmlinux-2.6.* root=/dev/ps3dd2\ndebian_Hugepages=/boot/vmlinux-2.6.* root=/dev/ps3dd2 hugepages=1" > /etc/kboot.conf
+
+E=`ls /boot | grep vmlinux`
+
+echo -e "debian=/boot/$E root=/dev/ps3dd2\ndebian_Hugepages=/boot/$E root=/dev/ps3dd2 hugepages=1" > /etc/kboot.conf
 
 
 ## Creating /dev/ps3flash device for ps3-utils
