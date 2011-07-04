@@ -5,13 +5,14 @@
 ## Please note that this is a work in progress
 
 ## Version 0.95
-
+echo " "
+echo " "
 echo "PPPPPP    SSSSSSS   3333333"
 echo "PP   PP   SS             33"
 echo "PPPPPP    SSSSSSS   3333333"
 echo "PP             SS        33"
 echo "PP        SSSSSSS   3333333"
-
+echo " "
 echo "DDDDDD    EEEEEEE   BBBBBB    IIIIIIII      AA      NN    NN"
 echo "DD   DD   EE        BB   BB      II       AA  AA    NNNN  NN"
 echo "DD   DD   EEEEE     BBBBBB       II      AAAAAAAA   NN NN NN"
@@ -19,7 +20,7 @@ echo "DD   DD   EE        BB   BB      II      AA    AA   NN  NNNN"
 echo "DDDDDD    EEEEEEE   BBBBBB    IIIIIIII   AA    AA   NN    NN"
 echo " "
 echo "Written By: nikitis"
-
+echo " "
 echo " "
 echo "Installer is in testing phase.  You may experience issues, but should not brick"
 echo "your console as it only works within the /dev/ps3dd environment."
