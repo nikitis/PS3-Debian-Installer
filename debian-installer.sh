@@ -34,7 +34,7 @@ echo "scheme listed above.  In furture releases I will provide choice of schema.
 echo " "
 echo "Please hit ctrl-c now to cancel this script if this does not work for you."
 echo " "
-read -p "Please press enter to continue."
+read -p "Press any key to continue."
 
 
 ## Setting up device variable
