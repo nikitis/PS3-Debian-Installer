@@ -36,7 +36,7 @@ echo "Please hit ctrl-c now to cancel this script if this does not work for you.
 echo " "
 read -p "Press any key to continue."
 
-
+umount /dev/ps3dd2
 ## Setting up device variable
 
 DEVICE="/dev/ps3dd"
