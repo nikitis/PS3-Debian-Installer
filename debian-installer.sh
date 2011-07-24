@@ -5,7 +5,7 @@
 ## Please note that this is a work in progress
 
 ## Version 0.95
-echo " "
+clear
 echo " "
 echo "PPPPPP    SSSSSSS   3333333"
 echo "PP   PP   SS             33"
@@ -37,7 +37,13 @@ echo "Please hit ctrl-c now to cancel this script if this does not work for you.
 echo " "
 read -p "Press any key to continue."
 
+
+## Umounting /dev/ps3dd2 in case of previous attempts at installs
+echo "Cleaning out old files in case previous attempt were made at installation..."
+rm -rf /tmp/petitboot/mnt/ps3dd2/*
 umount /dev/ps3dd2
+
+
 ## Setting up device variable
 
 DEVICE="/dev/ps3dd"
@@ -55,6 +61,7 @@ elif [ "$G" = y ]; then
 	read -p "How many partitions were created? " H
 	if [ "$H" = 1 ]; then
 		parted ${DEVICE} --script -- rm 1
+		dd if=/dev/zero of=${DEVICE} bs=512 count=200
 		parted ${DEVICE} --script -- mklabel GPT
 		parted ${DEVICE} --script -- mkpart primary 0 2GB
 		parted ${DEVICE} --script -- mkpart primary 2GB -1
@@ -62,6 +69,7 @@ elif [ "$G" = y ]; then
 	elif [ "$H" = 2 ]; then 
 		parted ${DEVICE} --script -- rm 2
 		parted ${DEVICE} --script -- rm 1
+		dd if=/dev/zero of=${DEVICE} bs=512 count=200
 		parted ${DEVICE} --script -- mklabel GPT
 		parted ${DEVICE} --script -- mkpart primary 0 2GB
 		parted ${DEVICE} --script -- mkpart primary 2GB -1
@@ -81,6 +89,7 @@ elif [ "$G" = y ]; then
 			parted ${DEVICE} --script -- rm 3
 			parted ${DEVICE} --script -- rm 2
 			parted ${DEVICE} --script -- rm 1
+			dd if=/dev/zero of=${DEVICE} bs=512 count=200
 			parted ${DEVICE} --script -- mklabel GPT
 			parted ${DEVICE} --script -- mkpart primary 0 2GB
 			parted ${DEVICE} --script -- mkpart primary 2GB -1
@@ -161,7 +170,7 @@ echo " "
 
 ## Setting tcp_enc to 0
 echo "Disabling tcp_enc for older petitboot installs to fix debootstrap"
-echo "0" > /proc/sys/net/ipv4/tcp_enc
+echo "0" > /proc/sys/net/ipv4/tcp_ecn
 echo " "
 
 
