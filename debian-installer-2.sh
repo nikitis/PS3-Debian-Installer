@@ -128,9 +128,8 @@ swapon /dev/ps3dd1
 
 ## Git cloning of Kernal)
 echo "Downloading kernel source from git and creating symlink"
-
-wget -O linux-2.6.tgz http://git.gitbrew.org/ps3/?p=ps3linux/linux-2.6.git\;a=snapshot\;h=HEAD\;sf=tgz
-tar -C /usr/src -xvf linux-2.6.tgz
+cd /usr/src
+git clone --depth 1 git://git.gitbrew.org/ps3/ps3linux/linux-2.6.git
 ln -sf /usr/src/linux-2.6 /usr/src/linux
 cp /usr/src/linux/ps3_linux_config /usr/src/linux/.config
 
@@ -145,6 +144,7 @@ make
 make install
 make modules_install
 cd /
+rm linux-2.6.tgz
 echo " "
 echo "Kernel compiling is done if no errors occured."
 echo " "
@@ -178,4 +178,6 @@ read -p "Press any key to reboot.  (If system hangs, hold power button for 8 sec
 
 echo " " 
 echo "Enjoy!"
+
+reboot
 
