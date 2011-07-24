@@ -121,12 +121,15 @@ echo " "
 read -p "Which filesystem type do you wish "root" to have?  ext(2/3/4) (s)kip: " A
 if [ "$A" = 2 ]; then
         echo "Formatting ext2"
+	umount /dev/ps3dd2
 	mkfs.ext2 /dev/ps3dd2
 elif [ "$A" = 3 ]; then
         echo "Formatting ext3"
+	umount /dev/ps3dd2
 	mkfs.ext3 /dev/ps3dd2
 elif [ "$A" = 4 ]; then
         echo "Formatting ext4"
+	umount /dev/ps3dd2
 	mkfs.ext4 /dev/ps3dd2
 elif [ "$A" = s ]; then
 	read -p "Have you already formatted your HDD?  This is different from partitioning. Are you sure you want to skip? (y/n) " B
@@ -134,12 +137,15 @@ elif [ "$A" = s ]; then
 		read -p "Which filesystem? ext(2/3/4) " A
 		if [ "$A" = 2 ]; then
                         echo "Formatting ext2"
+			umount /dev/ps3dd2
 			mkfs.ext2 /dev/ps3dd2
 		elif [ "$A" = 3 ]; then
                         echo "Formatting ext3"
+			umount /dev/ps3dd2
 			mkfs.ext3 /dev/ps3dd2
 		elif [ "$A" = 4 ]; then
                         echo "Formatting ext4"
+			umount /dev/ps3dd2
 			mkfs.ext4 /dev/ps3dd2
 		else
 			echo "You failed to hit 2, 3, 4.  You've crashed the script.  Start over."
