@@ -50,7 +50,7 @@ DEVICE="/dev/ps3dd"
 
 
 ## parted commands
-read -p "Have you already created partitions on your PS3 for Linux? (y/n): " G
+read -p "Have you already created partitions on your PS3 for Linux? (This does not include the Restore PS3 System partitioning.) (y/n): " G
 if [ "$G" = n ]; then
 	parted ${DEVICE} --script -- mklabel GPT
 	parted ${DEVICE} --script -- mkpart primary 0 2GB
@@ -189,7 +189,7 @@ echo " "
 echo "Copying 2nd half of installer and variables over to post-chrooted environment"
 cp ./debian-installer-2.sh /mnt/debian/tmp/debian-installer-2.sh
 sed -i "s/extvar/$A/g" /mnt/debian/tmp/debian-installer-2.sh
-
+cat /etc/resolv.conf > /mnt/debian/etc/resolv.conf
 
 ## Mounting proc as part of chroot.
 
