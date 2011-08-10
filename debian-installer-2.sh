@@ -45,16 +45,6 @@ echo " "
 echo -e "auto lo\niface lo inet loopback\n\nauto eth0\niface eth0 inet dhcp\n" > /etc/network/interfaces
 
 
-## Setting up /etc/resolv.conf
-
-read -p "If you have a different nameserver other than 192.168.1.1, please enter it now, or press (n): " E
-if [ "$E" = n ]; then
-	echo "nameserver 192.168.1.1" > /etc/resolv.conf
-else
-	echo -e "nameserver $E" > /etc/resolv.conf
-fi
-echo " "
-
 ## Configuring aptitude sources in /etc/apt/sources.list
 
 echo " "
