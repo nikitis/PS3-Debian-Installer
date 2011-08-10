@@ -67,7 +67,7 @@ aptitude -y install locales
 dpkg-reconfigure locales
 aptitude -y install console-data
 dpkg-reconfigure console-data
-
+echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
 
 ## Finishing touches
 
