@@ -102,9 +102,8 @@ else
 fi 
 
 ## Adding user to sudoers file
-chmod 777 /etc/sudoers
-sed -i 's/root	ALL=(ALL) ALL/root	ALL=(ALL) ALL\n\$F	ALL=(ALL) ALL/g' /etc/sudoers
-chmod 440 /etc/sudoers
+echo "Adding user to sudoers file"
+usermod -aG sudo $F
 
 echo " "
 echo "Installing development packages for kernel build"
