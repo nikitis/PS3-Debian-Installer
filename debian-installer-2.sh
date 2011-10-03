@@ -123,7 +123,7 @@ swapon /dev/ps3dd1
 ## Git cloning of Kernal)
 echo "Downloading kernel source from git and creating symlink"
 cd /usr/src
-git clone --depth 1 git://git.gitbrew.org/ps3/ps3linux/linux-2.6.git || git clone --depth 1 git://storm.gitbrew.org/ps3/ps3linux/linux-2.6.git || git clone --depth 1 git://foxbrew.org/ps3/ps3linux/linux-2.6.git
+git clone --depth 1 git://git.gitbrew.org/ps3/ps3linux/linux-2.6.git || git clone --depth 1 git://storm.gitbrew.org/ps3/ps3linux/linux-2.6.git || git clone --depth 1 git://foxbrew.org/ps3linux/linux-2.6.git
 ln -sf /usr/src/linux-2.6 /usr/src/linux
 cp /usr/src/linux/ps3_linux_config /usr/src/linux/.config
 
