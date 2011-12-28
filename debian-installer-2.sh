@@ -25,6 +25,7 @@ echo -e "/dev/ps3dd2	/		extextvar	defaults		0 1\n/dev/ps3vram	none		swap	sw			0 
 echo " "
 echo "Setting Swap Parition and Enabling."
 echo " "
+echo -e '#!/bin/sh -e\n#\n# rc.local\n#\n# This script is executed at the end of each multiuser runlevel.\n# Make sure that the script will \"exit 0\" on success or any other\n# value on error.\n#\n# By default this script does nothing.\nmkswap /dev/ps3vram\nswapon /dev/ps3vram\nmkswap /dev/ps3dd1\nswapon /dev/ps3dd1\n\nexit 0\n' > /etc/rc.local
 
 mkswap /dev/ps3vram
 mkswap /dev/ps3dd1
