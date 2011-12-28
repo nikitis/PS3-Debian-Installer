@@ -20,9 +20,19 @@ echo "Setting up fstab entries. . ."
 echo " "
 echo -e "/dev/ps3dd2	/		extextvar	defaults		0 1\n/dev/ps3vram	none		swap	sw			0 0\n/dev/ps3dd1	none		swap	sw			0 0\n/dev/sr0	/mnt/cdrom	auto	noauto,ro		0 0\nproc		/proc		proc	defaults		0 0\nshm		/dev/shm	tmpfs	nodev,nosuid,noexec	0 0\nspu		/spu		spufs	defaults		0 0\n" > /etc/fstab
 
+## Creating Swap Parition and Enabling
+
+echo " "
+echo "Setting Swap Parition and Enabling."
+echo " "
+
+mkswap /dev/ps3vram
+mkswap /dev/ps3dd1
+swapon /dev/ps3vram
+swapon /dev/ps3dd1
 
 ## Setting up timezone
-
+echo " "
 echo "Setting up timezone data"
 echo " "
 touch /etc/default/rcS
@@ -100,24 +110,19 @@ else
 	echo "Creating user $F"
 	adduser $F
 fi 
+echo " "
+
+
+
+echo "Installing development packages for kernel build"
+echo " "
+aptitude -y install git build-essential ncurses-dev glibc-dev-ppc64 sudo
+echo " "
 
 ## Adding user to sudoers file
 echo "Adding user to sudoers file"
 usermod -aG sudo $F
-
 echo " "
-echo "Installing development packages for kernel build"
-echo " "
-aptitude -y install git build-essential ncurses-dev glibc-dev-ppc64
-
-
-## Creating Swap Parition and Enabling
-
-echo " "
-echo "Setting Swap Parition and Enabling."
-echo " "
-mkswap /dev/ps3dd1
-swapon /dev/ps3dd1
 
 
 ## Git cloning of Kernal)
