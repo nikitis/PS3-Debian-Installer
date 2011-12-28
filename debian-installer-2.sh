@@ -108,7 +108,7 @@ usermod -aG sudo $F
 echo " "
 echo "Installing development packages for kernel build"
 echo " "
-aptitude -y install git build-essential ncurses-dev
+aptitude -y install git build-essential ncurses-dev glibc-dev-ppc64
 
 
 ## Creating Swap Parition and Enabling
