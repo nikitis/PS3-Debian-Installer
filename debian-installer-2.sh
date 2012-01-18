@@ -177,6 +177,7 @@ mkdir -p /home/$F/Source
 cd /home/$F/Source
 git clone git://git.gitbrew.org/ps3/ps3linux/ps3dm-utils.git
 cd /home/$F/Source/ps3dm-utils/
+sed -i "s/asm\/ps3dmproxy.h/\/usr\/src\/linux-2.6\/arch\/powerpc\/include\/asm\/ps3dmproxy.h/g" ps3dm_proxy.c
 make
 modprobe ps3dmproxy
 clear
