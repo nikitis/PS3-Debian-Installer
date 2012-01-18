@@ -169,6 +169,15 @@ echo -e "Creating udev device \"ps3vflash\" for ps3-utils"
 echo " "
 echo -e "KERNEL==\"ps3vflash\", SYMLINK+=\"ps3flash\"" > /etc/udev/rules.d/70-persistent-ps3flash.rules
 
+## Downloading ps3dm-utils
+echo " "
+echo -e "Downloading and compiling ps3dm-utils"
+echo " "
+mkdir -p /home/$F/Source
+cd /home/$F/Source
+git clone git://git.gitbrew.org/ps3/ps3linux/ps3dm-utils.git
+cd /home/$F/Source/ps3dm-utils/
+
 ## Finished
 
 echo " "
