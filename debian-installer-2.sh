@@ -186,7 +186,7 @@ echo "broken and are installing Debian to repair their consoles.  If this is not
 echo "then please select the "NO" option."
 echo "################"
 echo " "
-read -p "Is this a RSOD (Red Screen of Death) Console that you would like to fix? (y/n)" $J
+read -p "Is this a RSOD (Red Screen of Death) Console that you would like to fix? (y/n): " $J
 if [ "$J" = y ]; then
 	touch log.txt
 	echo "Status of vtrm before init:" >> log.txt
@@ -194,6 +194,7 @@ if [ "$J" = y ]; then
 	echo " " >> log.txt
 	echo "Status of vtrm after init:" >> log.txt
 	./ps3dm-vtrm /dev/ps3dmproxy init >> log.txt
+	echo " " >> log.txt
 	echo " "
 	cat log.txt
 	echo "Log will dissappear within 10 seconds.  To view later, go into ~/Source/ps3dm-utils/log.txt"
