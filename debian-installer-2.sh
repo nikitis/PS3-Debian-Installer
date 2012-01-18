@@ -117,7 +117,7 @@ echo " "
 
 echo "Installing development packages for kernel build"
 echo " "
-aptitude -y install git build-essential ncurses-dev glibc-dev-ppc64 sudo
+aptitude -y install git build-essential ncurses-dev glibc-dev-ppc64 sudo libc6-dev-ppc64 libssl-dev
 echo " "
 
 ## Adding user to sudoers file
@@ -168,7 +168,6 @@ echo " "
 echo -e "Creating udev device \"ps3vflash\" for ps3-utils"
 echo " "
 echo -e "KERNEL==\"ps3vflash\", SYMLINK+=\"ps3flash\"" > /etc/udev/rules.d/70-persistent-ps3flash.rules
-
 
 ## Finished
 
