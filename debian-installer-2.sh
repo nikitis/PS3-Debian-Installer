@@ -177,6 +177,9 @@ mkdir -p /home/$F/Source
 cd /home/$F/Source
 git clone git://git.gitbrew.org/ps3/ps3linux/ps3dm-utils.git
 cd /home/$F/Source/ps3dm-utils/
+make
+modprobe ps3dmproxy
+
 
 ## Finished
 
