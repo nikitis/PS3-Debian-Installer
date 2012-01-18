@@ -179,7 +179,28 @@ git clone git://git.gitbrew.org/ps3/ps3linux/ps3dm-utils.git
 cd /home/$F/Source/ps3dm-utils/
 make
 modprobe ps3dmproxy
-
+clear
+echo "### WARNING ###"
+echo "The following step is for those who have a Red Screen of Death (RSOD) Console that has been"
+echo "broken and are installing Debian to repair their consoles.  If this is not a broken console"
+echo "then please select the "NO" option."
+echo "################"
+echo " "
+read -p "Is this a RSOD (Red Screen of Death) Console that you would like to fix? (y/n)" $J
+if [ "$J" = y ]; then
+	touch log.txt
+	echo "Status of vtrm before init:" >> log.txt
+	./ps3dm-vtrm /dev/ps3dmproxy get-status >> log.txt
+	echo " " >> log.txt
+	echo "Status of vtrm after init:" >> log.txt
+	./ps3dm-vtrm /dev/ps3dmproxy init >> log.txt
+	echo " "
+	cat log.txt
+	echo "Log will dissappear within 10 seconds.  To view later, go into ~/Source/ps3dm-utils/log.txt"
+	sleep 10
+else
+	echo "Exiting RSOD Function"
+fi
 
 ## Finished
 
