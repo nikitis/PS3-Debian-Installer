@@ -194,6 +194,7 @@ if [ "$J" = y ]; then
 	./ps3dm_vtrm /dev/ps3dmproxy get_status >> log.txt
 	echo " " >> log.txt
 	echo "Status of vtrm after init:" >> log.txt
+	sleep 15
 	./ps3dm_vtrm /dev/ps3dmproxy init >> log.txt
 	echo " " >> log.txt
 	echo " "
