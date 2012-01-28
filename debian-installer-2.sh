@@ -197,6 +197,8 @@ if [ "$J" = y ]; then
 	sleep 15
 	./ps3dm_vtrm /dev/ps3dmproxy init >> log.txt
 	echo " " >> log.txt
+	sleep 15
+	./ps3dm_vtrm /dev/ps3dmproxy get_status >> log.txt
 	echo " "
 	cat log.txt
 	echo "Log will dissappear within 10 seconds.  To view later, go into ~/Source/ps3dm-utils/log.txt"
