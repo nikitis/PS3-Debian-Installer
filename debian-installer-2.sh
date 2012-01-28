@@ -191,10 +191,10 @@ read -p "Is this a RSOD (Red Screen of Death) Console that you would like to fix
 if [ "$J" = y ]; then
 	touch log.txt
 	echo "Status of vtrm before init:" >> log.txt
-	./ps3dm-vtrm /dev/ps3dmproxy get-status >> log.txt
+	./ps3dm_vtrm /dev/ps3dmproxy get-status >> log.txt
 	echo " " >> log.txt
 	echo "Status of vtrm after init:" >> log.txt
-	./ps3dm-vtrm /dev/ps3dmproxy init >> log.txt
+	./ps3dm_vtrm /dev/ps3dmproxy init >> log.txt
 	echo " " >> log.txt
 	echo " "
 	cat log.txt
