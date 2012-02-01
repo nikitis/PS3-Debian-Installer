@@ -141,7 +141,7 @@ echo " "
 echo "Starting compilation of kernel. (Takes around 1 hour or less.)"
 cd /usr/src/linux
 make menuconfig
-make
+make -j2
 make install
 make modules_install
 cd /
